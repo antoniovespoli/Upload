@@ -245,12 +245,6 @@ class LSTMEncoder(FairseqEncoder):
         bsz, seqlen = src_tokens.size()
 
         # MIE MODIFICHE
-
-        print("ATTENZ ANTO")
-        print(self.dictionary.string(self.dictionary.encode_line(self.dictionary.string(src_tokens))))
-        print(src_lengths.data)
-        print(self.dictionary.encode_line("--"))
-
         x = []
         lengths = []
         toks = []
@@ -273,15 +267,10 @@ class LSTMEncoder(FairseqEncoder):
 
         seqlen = src_lengths[0]
 
-        print(lengths)
-
         # FINO A QUA
 
         # embed tokens
         #x = self.embed_tokens(src_tokens)
-
-        print("ATTENZ ANTO2")
-        print(x)
 
         x = F.dropout(x, p=self.dropout_in, training=self.training)
 
