@@ -188,7 +188,7 @@ class LSTMModel(FairseqEncoderDecoderModel):
         prev_output_tokens,
         incremental_state: Optional[Dict[str, Dict[str, Optional[Tensor]]]] = None,
     ):
-        encoder_out, a = self.encoder(src_tokens, src_lengths=src_lengths)
+        encoder_out = self.encoder(src_tokens, src_lengths=src_lengths)
         decoder_out = self.decoder(
             prev_output_tokens, encoder_out=encoder_out, incremental_state=incremental_state
         )
