@@ -265,10 +265,11 @@ class LSTMEncoder(FairseqEncoder):
             toks.append([0] * len(records))
             x.append(records)
 
-        x = torch.tensor(x, dtype=torch.float32, device=torch.device("cuda"))
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-        src_tokens = torch.tensor(toks, dtype=torch.int32, device=torch.device("cuda"))
-        src_lengths = torch.tensor(lengths, dtype=torch.int32, device=torch.device("cuda"))
+        x = torch.tensor(x, dtype=torch.float32, device=torch.device(device))
+        src_tokens = torch.tensor(toks, dtype=torch.int32, device=torch.device(device))
+        src_lengths = torch.tensor(lengths, dtype=torch.int32, device=torch.device(device))
 
         seqlen = src_lengths[0]
 
