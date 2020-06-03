@@ -305,7 +305,7 @@ class LSTMEncoder(FairseqEncoder):
             final_hiddens,  # num_layers x batch x num_directions*hidden
             final_cells,  # num_layers x batch x num_directions*hidden
             encoder_padding_mask,  # seq_len x batch
-        )), src_lengths
+        ))
 
     def combine_bidir(self, outs, bsz: int):
         out = outs.view(self.num_layers, 2, bsz, -1).transpose(1, 2).contiguous()
